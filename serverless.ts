@@ -4,6 +4,7 @@ import hello from "@functions/hello";
 import login from "@functions/login";
 import register from "@functions/register";
 import verifyEmail from "@functions/verify_email";
+import estimationSession from "@functions/estimation_session";
 
 const serverlessConfiguration: AWS = {
   service: "carbon-footprint",
@@ -12,10 +13,11 @@ const serverlessConfiguration: AWS = {
     "serverless-esbuild",
     "serverless-offline",
     "serverless-prune-plugin",
+    "serverless-dotenv-plugin",
   ],
   provider: {
     name: "aws",
-    runtime: "nodejs14.x",
+    runtime: "nodejs20.x",
     region: "ap-south-1",
     stage: '${opt:stage,"staging"}',
     apiGateway: {
@@ -27,7 +29,7 @@ const serverlessConfiguration: AWS = {
         Effect: "Allow",
         Action: ["cognito-idp:*"],
         Resource:
-          "arn:aws:cognito-idp:ap-south-1:721497630731:userpool/ap-south-1_a6uRy0VxX",
+          "arn:aws:cognito-idp:ap-south-1:058264295782:userpool/ap-south-1_T8NEIqIpX",
       },
     ],
     environment: {
@@ -36,7 +38,7 @@ const serverlessConfiguration: AWS = {
     },
   },
   // import the function via paths
-  functions: { hello, login, register, verifyEmail },
+  functions: { hello, login, register, verifyEmail ,estimationSession},
   package: { individually: true },
   custom: {
     prune: {

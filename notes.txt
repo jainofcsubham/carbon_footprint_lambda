@@ -1,0 +1,1 @@
+Scope1 calculator :- https://gbfcalc.azurewebsites.net/gbf/calc/datainput

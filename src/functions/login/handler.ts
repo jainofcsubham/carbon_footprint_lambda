@@ -14,10 +14,16 @@ const loginHandler: ValidatedEventAPIGatewayProxyEvent<typeof schema> = async (e
 
   const data =await  loginUser({email,password});
   if(data.status != "success"){
-    return formatJSONError({},"Something went wrong!! Please try again.")
+    return formatJSONError({
+      status : "error",
+      message : "Cannot login."
+    })
   }
   return formatJSONResponse({
-    data
+    status : "success",
+    accessToken : data?.data?.AuthenticationResult?.AccessToken,
+    idToken : data?.data?.AuthenticationResult?.IdToken,
+    refreshToken  : data?.data?.AuthenticationResult?.RefreshToken
   });
 };
 

@@ -1,4 +1,3 @@
-import schema from './schema';
 import { handlerPath } from '@libs/handler-resolver';
 
 export default {
@@ -9,10 +8,8 @@ export default {
         method: 'get',
         path: 'hello',
         cors : true,
-        request: {
-          schemas: {
-            'application/json': schema,
-          },
+        authorizer :{
+          arn : "arn:aws:cognito-idp:ap-south-1:058264295782:userpool/ap-south-1_T8NEIqIpX"
         },
       },
     },

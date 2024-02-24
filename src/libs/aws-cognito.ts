@@ -11,8 +11,8 @@ import {
 } from "@aws-sdk/client-cognito-identity-provider";
 
 const cognito = new CognitoIdentityProviderClient({ region: "ap-south-1" });
-const ClientId = "25vd22rsos2oeksglcrrll6623";
-const UserPoolId = "ap-south-1_a6uRy0VxX";
+const ClientId = "4d36ijm02ebeh9vddtcn4suini";
+const UserPoolId = "ap-south-1_T8NEIqIpX";
 
 export const loginUser = async ({
   email,
@@ -117,7 +117,7 @@ export const registerUser = async ({
   }
 };
 
-export const confirmUser = ({
+export const confirmUser =async ({
   email,
   password,
 }: {
@@ -133,7 +133,7 @@ export const confirmUser = ({
 
   const command = new AdminSetUserPasswordCommand(params);
   try {
-    const data = cognito.send(command);
+    const data = await  cognito.send(command);
     return {
       status: "success",
       body: data,
@@ -147,7 +147,7 @@ export const confirmUser = ({
   }
 };
 
-export const deleteUser = (email : string) => {
+export const deleteUser = async (email : string) => {
   const params: AdminDeleteUserCommandInput = {
     Username : email,
     UserPoolId,
@@ -155,7 +155,7 @@ export const deleteUser = (email : string) => {
 
   const command = new AdminDeleteUserCommand(params);
   try {
-    const data = cognito.send(command);
+    const data = await  cognito.send(command);
     return {
       status: "success",
       body: data,

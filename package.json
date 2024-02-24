@@ -15,10 +15,14 @@
   "dependencies": {
     "@aws-sdk/client-cognito-identity-provider": "^3.509.0",
     "@middy/core": "^3.4.0",
+    "@middy/db-manager": "^1.5.2",
     "@middy/do-not-wait-for-empty-event-loop": "^5.2.3",
     "@middy/http-json-body-parser": "^3.4.0",
     "aws-sdk": "^2.1553.0",
-    "serverless-offline": "^13.3.3"
+    "pg": "^8.11.3",
+    "serverless-offline": "^13.3.3",
+    "typeorm": "^0.3.20",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@serverless/typescript": "^3.0.0",
@@ -27,6 +31,7 @@
     "esbuild": "^0.14.11",
     "json-schema-to-ts": "^1.5.0",
     "serverless": "^3.0.0",
+    "serverless-dotenv-plugin": "^6.0.0",
     "serverless-esbuild": "^1.23.3",
     "serverless-prune-plugin": "^2.0.2",
     "ts-node": "^10.4.0",

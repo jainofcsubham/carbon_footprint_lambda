@@ -28,7 +28,6 @@ export const formatJSONResponse = (response: Record<string, unknown>) => {
 
 export const formatJSONError = (
   response: Record<string, unknown>,
-  error: string
 ) => {
   return {
     statusCode: 500,
