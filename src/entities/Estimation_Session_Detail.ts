@@ -16,11 +16,11 @@ export class EstimationSessionDetail {
 
     @ManyToOne(() => EstimationSession,(session) => session.details)
     @JoinColumn({ name: 'session_id' })
-    session: EstimationSession;
+    session?: EstimationSession;
 
     @ManyToOne(() => CategoryQuestion,(question) => question.answers)
     @JoinColumn({ name: 'question_id' })
-    question: CategoryQuestion;
+    question?: CategoryQuestion;
 
     constructor(
         obj: {

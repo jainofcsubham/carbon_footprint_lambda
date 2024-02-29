@@ -36,14 +36,14 @@ const registerHandler: ValidatedEventAPIGatewayProxyEvent<
   if (registerRes.status == "success" && confirmRes.status == "success") {
     const connection = await dbInstance.getConnection();
 
-    const user = new User({
+    const user: User = {
       email,
       date_of_birth: new Date(date_of_birth),
       first_name,
       gender,
       last_name,
       user_id: registerRes.data?.User?.Username,
-    });
+    };
     await connection.getRepository("User").save(user);
     await connection.destroy();
     return formatJSONResponse({

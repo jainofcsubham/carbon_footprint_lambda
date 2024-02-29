@@ -137,3 +137,17 @@ INSERT INTO "Category_Question_Option" ("question_id","value","factor") VALUES
 	('59f2e3e7-72ba-4bbd-9bc7-e555cead228b','Non-Vegetarian Diet - Rarely',6.6),
 	('59f2e3e7-72ba-4bbd-9bc7-e555cead228b','Non-Vegetarian Diet - Sometimes',8.26),
 	('59f2e3e7-72ba-4bbd-9bc7-e555cead228b','Non-Vegetarian Diet - Regularly',10.36);
+
+-- Alter Estimation_session table
+
+ALTER TABLE IF EXISTS public."Estimation_Session"
+    ADD COLUMN IF NOT EXISTS created_on timestamp without time zone NOT NULL;
+
+ALTER TABLE IF EXISTS public."Estimation_Session"
+    ADD COLUMN IF NOT EXISTS user_id uuid NOT NULL;
+ALTER TABLE IF EXISTS public."Estimation_Session"
+    ADD CONSTRAINT user_id FOREIGN KEY (user_id)
+    REFERENCES public."User" (user_id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;

@@ -3,8 +3,7 @@ import type { AWS } from "@serverless/typescript";
 import hello from "@functions/hello";
 import login from "@functions/login";
 import register from "@functions/register";
-import verifyEmail from "@functions/verify_email";
-import estimationSession from "@functions/estimation_session";
+import {getQuestions,saveSession} from "@functions/estimation_session";
 
 const serverlessConfiguration: AWS = {
   service: "carbon-footprint",
@@ -19,6 +18,7 @@ const serverlessConfiguration: AWS = {
     name: "aws",
     runtime: "nodejs20.x",
     region: "ap-south-1",
+    timeout : 30,
     stage: '${opt:stage,"staging"}',
     apiGateway: {
       minimumCompressionSize: 1024,
@@ -38,7 +38,13 @@ const serverlessConfiguration: AWS = {
     },
   },
   // import the function via paths
-  functions: { hello, login, register, verifyEmail ,estimationSession},
+  functions: {
+    hello,
+    login,
+    register,
+    getQuestions,
+    saveSession
+  },
   package: { individually: true },
   custom: {
     prune: {
